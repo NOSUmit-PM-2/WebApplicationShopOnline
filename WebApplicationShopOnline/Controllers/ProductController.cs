@@ -12,11 +12,17 @@ namespace WebApplicationShopOnline.Controllers
         //    return prod.ToString();
         //}
 
+        //public IActionResult Index(string name, decimal cost, string description)
+        //{
+        //    Product prod = new Product(name, description, cost);
+        //    ViewBag.Product = prod;
+        //    return View();
+        //}
+
         public IActionResult Index(string name, decimal cost, string description)
         {
             Product prod = new Product(name, description, cost);
-            ViewBag.Product = prod;
-            return View();
+            return View(prod);
         }
     }
 }

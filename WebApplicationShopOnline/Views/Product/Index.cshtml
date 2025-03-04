@@ -1,12 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Подробнее";
-}
+﻿@model Product
 
-<div class="text-left">
-    <h1 class="display-4">Информация о продукте</h1>
-    <p>
-       <h4>@ViewBag.Product.Name</h4>
-       @ViewBag.Product.Description<br>
-       @ViewBag.Product.Cost р.
-    </p>
+<div class="row">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="https://sinyora.ru/images/img_products/full_Ms_Chebureki.jpg" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-text">@Model.Description</p>
+                    <p class="card-text"><small class="text-muted">@Model.Cost р.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

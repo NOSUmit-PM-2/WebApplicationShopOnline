@@ -5,9 +5,9 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string name, string description, decimal cost)
         {
-            Product prod = new Product("пирожок", "с ливером", 50);
+            Product prod = new Product(name, description, cost);
             //ViewBag.Product = prod;
             return View(prod);
         }

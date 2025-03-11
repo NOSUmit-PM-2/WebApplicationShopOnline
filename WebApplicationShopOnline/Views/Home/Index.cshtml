@@ -11,6 +11,15 @@
                 <li>Создание модели</li>
                 <li>Создание контроллера</li>
                 <li>Создание представления</li>
+                <ul>
+                    <li><a href="/product/index?name=Чебурек&description=с сыром&cost=120">Чебурек</a></li>
+                    <li><a asp-area=""
+                           asp-controller="product"
+                           asp-action="index"
+                           asp-route-name="Пирожок"
+                           asp-route-description="печеный"
+                           asp-route-cost="50">Пирожок</a></li>
+                </ul>
                 <li>Создание класса пользователь с полями: имя, логин, пароль, телефон. Создание полного MVC  для отображения информации о пользователе</li>
             </ul>
         </li>

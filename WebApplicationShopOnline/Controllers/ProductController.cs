@@ -16,10 +16,10 @@ namespace WebApplicationShopOnline.Controllers
         }
 
 
-        public IActionResult Index()
-        {
-            Product prod = new Product("Чебурек", "с сыром", 120);
 
+        public IActionResult Index(string name, string description, decimal cost, string path)
+        {
+            Product prod = new Product(name, description, cost, path);
             return View(prod);
         }
         

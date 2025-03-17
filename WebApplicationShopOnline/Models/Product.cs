@@ -23,5 +23,7 @@
         {
             return String.Join("\n", new String[]{Id.ToString(), Name, Cost.ToString(), Description });
         }
+
+
     }
 }

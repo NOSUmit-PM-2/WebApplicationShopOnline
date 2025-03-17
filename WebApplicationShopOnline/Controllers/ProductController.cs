@@ -8,10 +8,9 @@ namespace WebApplicationShopOnline.Controllers
     {
         private readonly ProductRepository catalog = new ProductRepository();
 
-        public IActionResult Index(string name, decimal cost, string description)
+        public IActionResult Index(int id)
         {
-
-            Product product = catalog.TryGetById(1);
+            Product product = catalog.TryGetById(id);
             if (product != null) 
                   return View(product);
             return null;

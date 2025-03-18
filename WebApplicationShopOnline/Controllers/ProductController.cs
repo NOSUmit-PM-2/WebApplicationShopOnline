@@ -2,13 +2,17 @@
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 using System.Xml.Linq;
+using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
+        ProductsRepository productsRepository = new ProductsRepository();
+        
         private readonly ILogger<ProductController> _logger;
+
 
         public ProductController(ILogger<ProductController> logger)
         {
@@ -16,13 +20,18 @@ namespace WebApplicationShopOnline.Controllers
         }
 
 
-
-        public IActionResult Index(string name, string description, decimal cost, string path)
+        public IActionResult Index(int id)
         {
-            Product prod = new Product(name, description, cost, path);
+            Product prod = productsRepository.TryGetById(id);
             return View(prod);
         }
-        
-       
+
+
+        public IActionResult Catalog(int id) 
+        {
+            List<Product>products = productsRepository.GetAll();
+            //return View("CatalogSimple", products);
+            return View(products);
+        }
     }
 }

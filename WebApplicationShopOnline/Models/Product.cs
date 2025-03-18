@@ -18,6 +18,5 @@
             PathPicture = pathPicture;
             instanceCounter++;
         }
-
     }
 }

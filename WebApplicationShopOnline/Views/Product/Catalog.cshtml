@@ -1,0 +1,26 @@
+﻿@model List<Product>
+@{
+    <h3>Каталог</h3>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-3">
+                <div class="card shadow">
+                    <div class="card-body">
+                        @product.Name
+                    </div>
+                    <div class="card-img">
+                        <img src="@Url.Content(product.Image)" alt="@product.Name" onerror="this.onerror=null; this.src='/path/to/default-image.jpg';">
+                    </div>
+                    <div class="card-body">
+                        @product.Description
+                    </div>
+                    <div class="card-footer">
+                        @product.Cost
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

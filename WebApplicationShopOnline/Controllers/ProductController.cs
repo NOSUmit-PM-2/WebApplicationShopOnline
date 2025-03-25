@@ -6,19 +6,22 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductRepository catalog = new ProductRepository();
+        readonly IProductRepository productsRepository;
+
+        public ProductController(IProductRepository prodRepo)
+        {
+            this.productsRepository = prodRepo;
+        }
 
         public IActionResult Index(int id)
         {
-            Product product = catalog.TryGetById(id);
-            if (product != null) 
-                  return View(product);
-            return null;
+            Product product = productsRepository.TryGetById(id);
+            return View(product);
         }
 
         public IActionResult Catalog()
         {
-            var products = catalog.GetProducts();
+            var products = productsRepository.GetProducts();
             //return View("CatalogSimple", products);
             return View(products);
         }

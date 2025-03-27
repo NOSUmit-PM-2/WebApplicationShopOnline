@@ -6,7 +6,12 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        ProductsRepository productsRepository = new ProductsRepository();
+        readonly IProductsRepository productsRepository;
+
+        public ProductController(IProductsRepository productsRepository)
+        {
+            this.productsRepository = productsRepository;
+        }
 
         public IActionResult Index(int id)
         {

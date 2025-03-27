@@ -1,7 +1,11 @@
+using WebApplicationShopOnline.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//builder.Services.AddSingleton<ProductsRepository>();
+builder.Services.AddSingleton<IProductsRepository, ProductsInJSONRepository>();
 
 var app = builder.Build();
 

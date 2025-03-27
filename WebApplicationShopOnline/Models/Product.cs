@@ -7,14 +7,16 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Cost { get; set; }
+        public string PathImage { get; set; }
 
-        public Product(string name, string description, decimal cost)
+        public Product(string name, string description, decimal cost, string pathImage)
         {
             Id = instanceCounter;
             Name = name;
             Description = description;
             Cost = cost;
             instanceCounter++;
+            PathImage = pathImage;
         }
 
         public override string ToString()

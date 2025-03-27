@@ -1,0 +1,30 @@
+﻿@model User;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/User.css">
+</head>
+<body>
+    <h2>Список пользователей</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Возраст</th>
+                <th>Пароль</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Email</td>
+                <td>@Model.Age</td>
+                <td>@Model.Password</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

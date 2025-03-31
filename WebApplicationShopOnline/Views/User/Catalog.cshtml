@@ -1,4 +1,11 @@
 ﻿@model List<User>
+<form method="post">
+    <label>Поиск по имени пользователя (регистр не важен)</label>
+    <br>
+    <input type="text" name="userName" placeholder="Имя пользователя" required>
+    <br>
+    <button type="submit" class="btn btn-dark" asp-area="" asp-controller="User" asp-action="Search">Найти</button>
+</form>
 
 <div class="row">
      @foreach(var user in Model)

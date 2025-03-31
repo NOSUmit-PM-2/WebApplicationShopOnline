@@ -1,0 +1,51 @@
+﻿@model User
+
+<div class="row justify-content-center">
+    <div class="card mb-3 shadow-lg" style="max-width: 540px; border-radius: 15px; background-color: #f8f9fa;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" class="card-img" alt="User Image" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px; object-fit: cover;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title text-primary font-weight-bold">Name: @Model.Name</h5>
+                    <p class="card-text"><strong>Login:</strong> @Model.Login</p>
+                    <p class="card-text"><strong>Password:</strong> @Model.Password</p>
+                    <p class="card-text"><strong>Telephone:</strong> @Model.Phone</p>
+                    <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* красоты чуток захотелось *@
+<style>
+    .card {
+        border: none;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-text {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .text-primary {
+        color: #007bff !important;
+    }
+
+    .text-muted {
+        color: #6c757d !important;
+    }
+</style>

@@ -18,7 +18,7 @@ namespace WebApplicationShopOnline.Controllers
             }
             return View(user);
         }
-        public IActionResult Catalog()
+        public IActionResult UserList()
         {
             var users = userRepository.GetAll();
             return View(users);

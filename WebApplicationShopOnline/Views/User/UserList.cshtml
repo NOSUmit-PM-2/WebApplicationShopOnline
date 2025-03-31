@@ -1,0 +1,26 @@
+﻿@model List<User>
+
+<div class="row">
+    @foreach (var user in Model)
+    {
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="~/images/userAva.png" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Имя пользователя: @user.Name</h5>
+                        <p class="card-text">Логин пользователя: @user.Login</p>
+                        <a class="btn btn-primary btn-lg active"
+                           asp-area=""
+                           asp-controller="User"
+                           asp-action="Index" asp-route-id="@user.IdUser">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

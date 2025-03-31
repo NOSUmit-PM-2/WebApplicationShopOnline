@@ -1,0 +1,39 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Пользователи";
+}
+
+<h1>Список пользователей</h1>
+
+<form method="get" action="/User/Users">
+    <input type="text" name="searchName" placeholder="Поиск по имени" />
+    <button type="submit">Найти</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Логин</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr onclick="location.href='/User/Details/@user.IdUser'">
+                <td>@user.IdUser</td>
+                <td>@user.Name</td>
+                <td>@user.Login</td>    
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

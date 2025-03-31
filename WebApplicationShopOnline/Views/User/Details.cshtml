@@ -1,0 +1,17 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Данные пользователя";
+}
+
+<h2>Данные пользователя</h2>
+
+<div>
+    <p><strong>ID пользователя:</strong> @Model.IdUser</p>
+    <p><strong>Имя:</strong> @Model.Name</p>
+    <p><strong>Логин:</strong> @Model.Login</p>
+    <p><strong>Телефон:</strong> @Model.Telephone</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+</div>
+
+<a href="/User/Users">Назад к списку</a>

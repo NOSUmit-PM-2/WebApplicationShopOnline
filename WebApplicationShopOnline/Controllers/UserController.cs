@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
+using System.Xml.Linq;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 
@@ -7,10 +8,20 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index(string name, string login, string password, string phone, string email)
+        readonly UserRepository userRepository = new UserRepository();
+        public IActionResult Index(int id)
         {
-            User user = new User(name, login, password, phone, email);
+            User user = userRepository.TryGetById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
             return View(user);
+        }
+        public IActionResult Catalog()
+        {
+            var users = userRepository.GetAll();
+            return View(users);
         }
     }
 }

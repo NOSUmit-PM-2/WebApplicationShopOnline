@@ -6,10 +6,14 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        readonly UserRepository userRepository = new UserRepository();
+        readonly IUsersRepository usersRepository;
+        public UserController(IUsersRepository usersRepository)
+        {
+            this.usersRepository = usersRepository;
+        }
         public IActionResult Index(int id)
         {
-            User user = userRepository.TryGetById(id);
+            User user = usersRepository.TryGetById(id);
             if (user == null)
             {
                 return null;
@@ -18,13 +22,13 @@ namespace WebApplicationShopOnline.Controllers
         }
         public IActionResult Catalog()
         {
-            var users = userRepository.GetAll();
+            var users = usersRepository.GetAll();
             return View(users);
         }
 
         public IActionResult Search(string userName)
         {
-            var user = userRepository.GetAll().FirstOrDefault(user => user.Name.ToLower() == userName.ToLower());
+            var user = usersRepository.GetAll().FirstOrDefault(user => user.Name.ToLower() == userName.ToLower());
             if (user == null)
             {
                 return View();

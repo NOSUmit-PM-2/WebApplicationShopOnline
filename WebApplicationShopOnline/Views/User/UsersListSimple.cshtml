@@ -1,0 +1,23 @@
+﻿@model List<User>
+
+<h1>Список Пользователей</h1>
+
+<table class="table table-striped">
+    
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.IdUser</td>
+                <td>@user.Name</td>
+                <td>@user.Login</td>
+                <td>@user.Telephone</td>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-area="" asp-controller="User" asp-action="Index" asp-route-id="@user.IdUser">Подробнее</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

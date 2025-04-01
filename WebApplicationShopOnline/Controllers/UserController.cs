@@ -4,15 +4,26 @@ using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
-    namespace WebApplicationShopOnline.Controllers
+    public class UserController : Controller
     {
-        public class UserController : Controller
+        private readonly UserRepository userlist = new UserRepository();
+
+        public IActionResult Index(int id)
         {
-            public IActionResult Index(string name, string login, string password, string telephone, string email)
-            {
-                User user = new User(name, login, password, telephone, email);
+            User user = userlist.TryGetById(id);
+            if (user != null)
                 return View(user);
-            }
+            return null;
         }
+
+        public IActionResult UsersList()
+        {
+            var users = userlist.GetUsers();
+            return View(users);
+        }
+
+
     }
+
+    
 }

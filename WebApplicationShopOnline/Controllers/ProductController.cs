@@ -6,8 +6,12 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductRepository catalog = new ProductRepository();
+        private readonly IProductRepository catalog;
 
+        public ProductController(IProductRepository productRepository)
+        {
+            catalog = productRepository;
+        }
         public IActionResult Index(int id)
         {
             Product product = catalog.TryGetById(id);

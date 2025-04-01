@@ -19,6 +19,15 @@
                         asp-area=""
                         asp-controller="Product"
                         asp-action="Index" asp-route-id="@product.Id">              Подробнее</a>
+                        <a class="btn btn-primary"
+                           asp-area=""
+                           asp-controller="Cart"
+                           asp-action="Add"
+                           asp-route-id="@product.Id"
+                           role="button">
+                            В корзину
+                        </a>
+
                 </div>
             </div>
         </div>

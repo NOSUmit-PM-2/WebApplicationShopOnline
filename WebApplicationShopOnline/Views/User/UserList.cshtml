@@ -1,8 +1,15 @@
 ﻿@model List<User>
 
+<form method="post">
+    <input type="text" name="searchName" class="form-control w-50" placeholder="Поиск..." required />
+    <button type="submit" class="btn btn-success" asp-area="" asp-controller="User" asp-action="Search">Поиск</button>
+</form>
+
 <div class="row">
     @foreach (var user in Model)
     {
+        
+
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-4">

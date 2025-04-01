@@ -23,5 +23,15 @@ namespace WebApplicationShopOnline.Controllers
             var users = userRepository.GetAll();
             return View(users);
         }
+
+        public IActionResult Search(string searchName)
+        {
+            var user = userRepository.GetAll().FirstOrDefault(user => user.Name == searchName);
+            if (user == null)
+            {
+                return NotFound("Таких не знаем!");
+            }
+            return RedirectToAction("Index", new { id = user.IdUser });
+        }
     }
 }

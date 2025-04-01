@@ -19,8 +19,9 @@ namespace WebApplicationShopOnline.Controllers
         public IActionResult Catalog()
         {
             var products = catalog.GetProducts();
-            //return View("CatalogSimple", products);
             return View(products);
         }
+
+        
     }
 }

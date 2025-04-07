@@ -6,11 +6,11 @@ using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Data
 {
-    public class InJSONUsersRepository : InterfUsersRepository
+    public class ReadingJsonUsersRepository : InterfUsersRepository
     {
         private List<User> users;
 
-        public InJSONUsersRepository()
+        public ReadingJsonUsersRepository()
         {
             string jsonData = File.ReadAllText("Data/users.json");
             users = JsonSerializer.Deserialize<List<User>>(jsonData) ?? new List<User>();

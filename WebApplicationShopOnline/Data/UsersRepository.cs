@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace WebApplicationShopOnline.Data
 {
-    public class UserRepository : InterfUsersRepository
+    public class UsersRepository : InterfUsersRepository
     {
         static List<User> users = new List<User>
         {

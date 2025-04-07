@@ -1,0 +1,51 @@
+[
+	{
+		"Name": "Алан",
+		"Login": "alan_66",
+		"Password": "112233",
+		"Phone": "+79783344556",
+		"Email": "alan@mail.com"
+	},
+	{
+		"Name": "Тимур",
+		"Login": "timur_22",
+		"Password": "987321",
+		"Phone": "+79787778899",
+		"Email": "timur@domain.com"
+	},
+	{
+		"Name": "Зарина",
+		"Login": "zarina_04",
+		"Password": "456123",
+		"Phone": "+79789876543",
+		"Email": "zarina@mail.com"
+	},
+	{
+		"Name": "Хетаг",
+		"Login": "khetag_11",
+		"Password": "987654",
+		"Phone": "+79788990022",
+		"Email": "khetag@email.com"
+	},
+	{
+		"Name": "Лейла",
+		"Login": "leila_39",
+		"Password": "123456",
+		"Phone": "+79787654321",
+		"Email": "leila@domain.com"
+	},
+	{
+		"Name": "Беслан",
+		"Login": "beslan_58",
+		"Password": "654321",
+		"Phone": "+79784455678",
+		"Email": "beslan@website.net"
+	},
+	{
+		"Name": "Мадина",
+		"Login": "madina_02",
+		"Password": "321987",
+		"Phone": "+79785544332",
+		"Email": "madina@service.org"
+	}
+]

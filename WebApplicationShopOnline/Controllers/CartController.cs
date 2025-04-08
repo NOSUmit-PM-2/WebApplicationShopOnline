@@ -25,5 +25,15 @@ namespace WebApplicationShopOnline.Controllers
             cartsRepository.Add(product, 1);
             return RedirectToAction("Index");
         }
+        public IActionResult IncreaseCount(int id)
+        {
+            cartsRepository.IncreaseCount(id, 1);
+            return RedirectToAction("Index");
+        }
+        public IActionResult DecreaseCount(int id)
+        {
+            cartsRepository.DecreaseCount(id, 1);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -42,5 +42,27 @@ namespace WebApplicationShopOnline.Data
             item.Amount = 1;
             return item;
         }
+        public void IncreaseCount(int productId, int userId)
+        {
+            var cart = TryGetByUserId(userId);
+            if (cart != null)
+            {
+                var item = cart.Items.FirstOrDefault(x => x.Product.Id == productId);
+                item.Amount++;
+            }
+        }
+        public void DecreaseCount(int productId, int userId)
+        {
+            var cart = TryGetByUserId(userId);
+            if (cart != null)
+            {
+                var item = cart.Items.FirstOrDefault(x => x.Product.Id == productId);
+                item.Amount--;
+                if (item.Amount == 0)
+                {
+                    cart.Items.Remove(item);
+                }
+            }
+        }
     }
 }

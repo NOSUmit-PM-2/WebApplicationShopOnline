@@ -2,7 +2,7 @@
 
 <div class="text-left">
     <h1 class="display-4">Корзина</h1>
-    @if (Model == null)
+    @if (Model == null || Model.Items.Count == 0)
     {
         <h3>У вас пока нет покупок</h3>
     }
@@ -28,6 +28,8 @@
                             <td>@itemCart.Product.Cost</td>
                             <td>@itemCart.Amount</td>
                             <td>@itemCart.Cost</td>
+                            <td><a class="btn btn-dark" href="/cart/decreasecount?id=@itemCart.Product.Id">-</a></td>
+                            <td><a class="btn btn-dark" href="/cart/increasecount?id=@itemCart.Product.Id">+</a></td>
                         </tr>
                     }
                 </tbody>

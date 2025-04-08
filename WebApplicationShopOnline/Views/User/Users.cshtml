@@ -1,0 +1,37 @@
+﻿@model List<User>
+<div class="container mt-4">
+    <h1 class="mb-4">Список пользователей</h1>
+
+    <form asp-action="Users" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="searchName" class="form-control" placeholder="Поиск по имени пользователя">
+            <button class="btn btn-primary" type="submit">Поиск</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>
+                            <a asp-controller="User" asp-action="Index" asp-route-name="@user.Name" class="text-decoration-none">@user.Name</a>
+                        </td>
+                        <td>@user.Email</td>
+                        <td>@user.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

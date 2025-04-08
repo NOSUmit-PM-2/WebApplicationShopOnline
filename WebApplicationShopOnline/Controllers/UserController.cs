@@ -1,20 +1,42 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index(string name, string email, string password,string telephone)
+        private readonly IUserRepository _repository;
+
+        public UserController(IUserRepository repository)
         {
-            if (name != "" || email == "" || password == "")
+            _repository = repository;
+        }
+
+        public IActionResult Index(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
             {
-                return View(new User("Ну введи имя", "И почту", "Пароль можно мне на почту","Телефон тоже надо"));
+                var user = _repository.GetByName(name);
+                return View(user);
             }
-            else
+            return RedirectToAction("Users");
+        }
+
+        public IActionResult Users(string? searchName = null)
+        {
+            if (!string.IsNullOrWhiteSpace(searchName))
             {
-               return View(new User(name,email,password,telephone));
+                var user = _repository.GetByName(searchName);
+                if (user != null)
+                {
+                    return View(new List<User> { user });
+                }
+                return View(new List<User>());
             }
+
+            var users = _repository.GetAll();
+            return View(users);
         }
     }
 }

@@ -1,19 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
+
 namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        ProductRepository productReposiitory = new ProductRepository();
-        public IActionResult Index()
+        private readonly ProductRepository catalog = new ProductRepository();
+
+        public IActionResult Index(int id)
         {
-            Product prod = new Product("пирожок", "с вишней", 50);
-            return View(prod);
+            Product product = catalog.TryGetById(id);
+            if (product != null) 
+                  return View(product);
+            return null;
         }
-        public IActionResult Catalog(int id)
+
+        public IActionResult Catalog()
         {
-            List<Product> products = productReposiitory.GetAll();
+            var products = catalog.GetProducts();
+            //return View("CatalogSimple", products);
             return View(products);
         }
     }

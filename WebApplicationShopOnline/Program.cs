@@ -1,4 +1,7 @@
+using WebApplicationShopOnline.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -19,5 +22,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=User}/{action=Index}/");
+app.MapControllerRoute(
+    name: "search",
+    pattern: "{controller=User}/{action=Search}/");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Product}/{action=Catalog}/");
 app.Run();

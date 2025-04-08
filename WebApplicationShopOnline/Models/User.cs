@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Serialization;
 
 namespace WebApplicationShopOnline.Models
 {
@@ -17,7 +18,11 @@ namespace WebApplicationShopOnline.Models
             Email = email;
             Password = password;
             Phone = telephone;
-            Login = email; // Using email as login by default
+            Login = email; 
+        }
+
+        public User()
+        {
         }
     }
 }

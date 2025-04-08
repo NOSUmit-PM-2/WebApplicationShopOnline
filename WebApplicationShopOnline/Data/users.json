@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "b5f4d60b-7cf1-4e02-b9e1-5799c9f7c1f1",
+    "Name": "Иван Иванов",
+    "Login": "ivan123",
+    "Password": "Qwerty123!",
+    "Phone": "+79991234567",
+    "Email": "ivan@example.com"
+  },
+  {
+    "Id": "3fbc2e1e-c7e2-4c3d-9e1c-b9b5e0e0b654",
+    "Name": "Мария Смирнова",
+    "Login": "masha_s",
+    "Password": "Pass456$",
+    "Phone": "+79876543210",
+    "Email": "maria@example.com"
+  },
+  {
+    "Id": "7d4c9f23-f7c9-4a8d-9fc1-2a2b0b1b47fd",
+    "Name": "Петр Петров",
+    "Login": "petr_p",
+    "Password": "MySecurePass1!",
+    "Phone": "+79001112233",
+    "Email": "petr@example.com"
+  }
+]

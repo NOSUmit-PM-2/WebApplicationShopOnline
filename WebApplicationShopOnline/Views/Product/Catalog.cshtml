@@ -21,7 +21,13 @@
                                asp-action="Index" 
                                asp-route-id="@product.Id"
                                role="button">Подробнее</a>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Редактировать</button>
+                            <a class="btn btn-primary"
+                               asp-area=""
+                               asp-controller="Cart"
+                               asp-action="Add"
+                               asp-route-id="@product.Id"
+                               role="button">В корзину</a>
+                         
                         </div>
                             <small class="text-muted">@product.Cost р.</small>
                     </div>

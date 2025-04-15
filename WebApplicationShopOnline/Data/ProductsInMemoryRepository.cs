@@ -3,7 +3,7 @@ using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Data
 {
-    public class ProductsRepository
+    public class ProductsInMemoryRepository : IProductsRepository
     {
         static List<Product> products = new List<Product>()
         {
@@ -14,13 +14,18 @@ namespace WebApplicationShopOnline.Data
         };
 
         public List<Product> GetAll()
-        { 
+        {
             return products;
         }
 
-        public Product TryGetById(int id) 
-        { 
+        public Product TryGetById(int id)
+        {
             return products.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void Add(Product product)
+        {
+            products.Add(product);
         }
     }
 }

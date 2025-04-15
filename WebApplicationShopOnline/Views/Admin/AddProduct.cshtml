@@ -1,0 +1,28 @@
+﻿@model Product
+<div class="row">
+    <div class="col">
+        @await Html.PartialAsync("SideMenu")
+    </div>
+    <div class="col-9">
+        <h2>Добавить продукт</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Название продукта</label>
+                <input type="text" class="form-control" name="Name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Описание продукта</label>
+                <input type="text" class="form-control" name="Description">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Цена</label>
+                <input type="number" class="form-control" name="Cost">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">URL картинки</label>
+                <input type="text" class="form-control" name="PathPicture">
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+</div>

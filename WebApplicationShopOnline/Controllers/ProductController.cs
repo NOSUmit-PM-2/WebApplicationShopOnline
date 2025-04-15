@@ -9,16 +9,12 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        ProductsRepository productsRepository = new ProductsRepository();
-        
-        private readonly ILogger<ProductController> _logger;
+        readonly IProductsRepository productsRepository;
 
-
-        public ProductController(ILogger<ProductController> logger)
+        public ProductController(IProductsRepository prodRepo)
         {
-            _logger = logger;
+            this.productsRepository = prodRepo;
         }
-
 
         public IActionResult Index(int id)
         {
@@ -27,7 +23,7 @@ namespace WebApplicationShopOnline.Controllers
         }
 
 
-        public IActionResult Catalog(int id) 
+        public IActionResult Catalog() 
         {
             List<Product>products = productsRepository.GetAll();
             //return View("CatalogSimple", products);

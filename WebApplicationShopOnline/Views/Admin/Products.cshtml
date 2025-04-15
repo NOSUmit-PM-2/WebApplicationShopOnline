@@ -1,0 +1,35 @@
+﻿@model List<Product>
+
+<div class="row">
+    <div class="col">
+        @await Html.PartialAsync("SideMenu")
+    </div>
+    <div class="col-9">
+        <h2>Продукты</h2>
+        <a
+            asp-controller="Admin"
+            asp-action="AddProduct"    
+        >Добавить продукт</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Продукт</th>
+                    <th scope="col">Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <th>Ред</th>
+                        <td>Удал</td>
+                        <td>@product.Name</td>
+                        <td>@product.Cost</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

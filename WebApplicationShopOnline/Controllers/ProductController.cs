@@ -23,7 +23,7 @@ namespace WebApplicationShopOnline.Controllers
 
         public IActionResult Catalog(int id)
         {
-            List<Product>products = productsRepository.GetAll();
+            List<Product> products = productsRepository.GetAll();
             return View(products);
         }
 

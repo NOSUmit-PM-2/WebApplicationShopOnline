@@ -11,7 +11,12 @@ namespace WebApplicationShopOnline.Data
         public ProductsInJSONRepository()
         {
             var jsonString = File.ReadAllText("Data/products.json");
-            JsonSerializer.Deserialize<List<Product>>(jsonString);
+            products = JsonSerializer.Deserialize<List<Product>>(jsonString);
+        }
+
+        public void Add(Product product)
+        {
+            products.Add(product);
         }
 
         public List<Product> GetAll()

@@ -9,6 +9,13 @@
         public decimal Cost { get; set; }
         public string PathImage { get; set; }
 
+
+        public Product() 
+        {
+            Id = instanceCounter;
+            instanceCounter++;
+        }
+
         public Product(string name, string description, decimal cost, string pathImage)
         {
             Id = instanceCounter;

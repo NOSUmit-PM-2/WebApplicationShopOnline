@@ -35,5 +35,19 @@ namespace WebApplicationShopOnline.Controllers
             productsRepository.Add(product);
             return RedirectToAction("Products", "Admin");
         }
+
+        [HttpGet]
+        public IActionResult EditProduct(int id)
+        {
+            var product = productsRepository.TryGetById(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult EditProduct(Product product)
+        {
+            // productsRepository.Add(product);
+            return RedirectToAction("Products", "Admin");
+        }
     }
 }

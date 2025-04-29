@@ -12,7 +12,6 @@ namespace WebApplicationShopOnline.Data
         {
             var jsonString = File.ReadAllText("Data/products.json");
             products = JsonSerializer.Deserialize<List<Product>>(jsonString);
-
         }
 
         public void Add(Product product)

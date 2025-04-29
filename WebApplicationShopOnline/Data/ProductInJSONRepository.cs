@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace WebApplicationShopOnline.Data
 {
-    public class ProductInJSONRepository : IProductRepository
+    public class ProductInJSONRepository : IProductsRepository
     {
         private static List<Product> products;
 
@@ -23,6 +23,14 @@ namespace WebApplicationShopOnline.Data
             return products.FirstOrDefault(product => product.Id == id);
         }
 
+        public List<Product> GetAll()
+        {
+            return products;
+        }
 
+        public void Add(Product product)
+        {
+            products.Add(product);
+        }
     }
 }

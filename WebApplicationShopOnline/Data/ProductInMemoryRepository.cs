@@ -2,7 +2,7 @@
 
 namespace WebApplicationShopOnline.Data
 {
-    public class ProductInMemoryRepository : IProductRepository
+    public class ProductInMemoryRepository : IProductsRepository
     {
         private static List<Product> products = new List<Product>()
         {
@@ -21,6 +21,14 @@ namespace WebApplicationShopOnline.Data
             return products.FirstOrDefault(product => product.Id == id);
         }
 
+        public List<Product> GetAll()
+        {
+            return products;
+        }
 
+        public void Add(Product product)
+        {
+            products.Add(product);
+        }
     }
 }

@@ -6,9 +6,9 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductRepository catalog;
+        private readonly IProductsRepository catalog;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductsRepository productRepository)
         {
             catalog = productRepository;
         }

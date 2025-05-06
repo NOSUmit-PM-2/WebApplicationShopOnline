@@ -32,8 +32,21 @@ namespace WebApplicationShopOnline.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-            productsRepository.Add(product);
-            return RedirectToAction("Products", "Admin");
+            if (product.Name.Length < 3)
+            {
+                ModelState.AddModelError("Name", "Слишком короткое имя");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var temp = new Product(product.Name, product.Description, product.Cost, product.PathPicture);
+                productsRepository.Add(temp);
+                return RedirectToAction("Products", "Admin");
+            }
+            else 
+            {
+                return View(product);
+            }
         }
 
         [HttpGet]
@@ -46,8 +59,8 @@ namespace WebApplicationShopOnline.Controllers
         [HttpPost]
         public IActionResult EditProduct(Product product)
         {
-            // productsRepository.Add(product);
-            return RedirectToAction("Products", "Admin");
+            productsRepository.Updata(product);
+            return RedirectToAction("Index", "Product", new { product.Id });
         }
     }
 }

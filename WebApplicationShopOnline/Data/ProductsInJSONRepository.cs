@@ -12,6 +12,7 @@ namespace WebApplicationShopOnline.Data
         {
             var jsonString = File.ReadAllText("Data/products.json");
             products = JsonSerializer.Deserialize<List<Product>>(jsonString);
+
         }
 
         public void Add(Product product)
@@ -27,6 +28,19 @@ namespace WebApplicationShopOnline.Data
         public Product TryGetById(int id)
         {
             return products.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void Updata(Product product)
+        {
+            var existingProduct = products.FirstOrDefault(x => x.Id == product.Id);
+            if (existingProduct == null)
+            {
+                return;
+            }
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+            existingProduct.Cost = product.Cost;
+            existingProduct.PathPicture = product.PathPicture;
         }
     }
 }

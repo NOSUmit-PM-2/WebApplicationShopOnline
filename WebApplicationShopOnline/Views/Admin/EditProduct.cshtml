@@ -4,33 +4,32 @@
         @await Html.PartialAsync("SideMenu")
     </div>
     <div class="col-9">
-        <h2>Добавить продукт</h2>
+        <h2>Редактировать продукт</h2>
         <form method="post">
-
+            
             <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
 
             <div class="mb-3">
                 <label class="form-label" asp-for="Name">Название продукта</label>
-                <input type="text" class="form-control" name="Name" asp-for="Name">
+                <input type="text" class="form-control" name="Name" asp-for="Name" value="@Model.Name">
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
-
+            
             <div class="mb-3">
                 <label class="form-label" asp-for="Description">Описание продукта</label>
-                <input type="text" class="form-control" name="Description" asp-for="Description">
+                <input type="text" class="form-control" name="Description" asp-for="Description" value="@Model.Description">
                 <span class="text-danger" asp-validation-for="Description"></span>
             </div>
 
-            
             <div class="mb-3">
                 <label class="form-label">Цена</label>
-                <input type="number" class="form-control" name="Cost">
+                <input type="number" class="form-control" name="Cost" value="@Model.Cost">
             </div>
             <div class="mb-3">
                 <label class="form-label">URL картинки</label>
-                <input type="text" class="form-control" name="PathImage">
+                <input type="text" class="form-control" name="PathImage" value="@Model.PathImage">
             </div>
-            <button type="submit" class="btn btn-primary">Добавить</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </div>
 </div>

@@ -8,5 +8,6 @@ namespace WebApplicationShopOnline.Data
         Product TryGetById(int id);
         List<Product> GetAll();
         void Add(Product product);
+        void Update(Product product);
     }
 }

@@ -23,7 +23,7 @@
                     <tr>
                         <td>@product.Name</td>
                         <td>@product.Cost</td>
-                        <th>Ред</th>
+                        <th><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">Ред</a></th>
                         <td>Удал</td>
                     </tr>
                 }

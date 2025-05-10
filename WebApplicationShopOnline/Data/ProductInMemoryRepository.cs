@@ -2,7 +2,7 @@
 
 namespace WebApplicationShopOnline.Data
 {
-    public class ProductRepository
+    public class ProductInMemoryRepository : IProductsRepository
     {
         private static List<Product> products = new List<Product>()
         {
@@ -12,15 +12,37 @@ namespace WebApplicationShopOnline.Data
         };
 
         public List<Product> GetProducts()
-        { 
+        {
             return products;
         }
 
-        public Product TryGetById(int id) 
+        public Product TryGetById(int id)
         {
             return products.FirstOrDefault(product => product.Id == id);
         }
-    
+
+        public List<Product> GetAll()
+        {
+            return products;
+        }
+
+        public void Add(Product product)
+        {
+            products.Add(product);
+        }
+        public void Update(Product product)
+        {
+            var existingProduct = products.FirstOrDefault
+      (x => x.Id == product.Id);
+            if (existingProduct == null)
+            {
+                return;
+            }
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+            existingProduct.Cost = product.Cost;
+            existingProduct.PathImage = product.PathImage;
+        }
 
     }
 }

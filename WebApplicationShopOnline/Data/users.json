@@ -1,0 +1,72 @@
+[
+  {
+    "Name": "Иван",
+    "Login": "ivan_01",
+    "Password": "834761",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Мария",
+    "Login": "maria2023",
+    "Password": "920475",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Сергей",
+    "Login": "serg_007",
+    "Password": "123987",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Анна",
+    "Login": "ann_a",
+    "Password": "654000",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Дмитрий",
+    "Login": "dima1337",
+    "Password": "777888",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Елена",
+    "Login": "lenochka",
+    "Password": "543219",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Алексей",
+    "Login": "lexa_top",
+    "Password": "482639",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Ольга",
+    "Login": "olga_sky",
+    "Password": "112233",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Павел",
+    "Login": "pavel_88",
+    "Password": "999000",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  },
+  {
+    "Name": "Наталья",
+    "Login": "nata_2024",
+    "Password": "606606",
+    "Telephone": "+77777777777",
+    "Email": "ya@ya.ya"
+  }
+]  

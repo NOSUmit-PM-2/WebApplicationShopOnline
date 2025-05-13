@@ -9,6 +9,8 @@
             
             <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
 
+            <input type="hidden" name="Id" asp-for="Id" value="@Model.Id"/>
+
             <div class="mb-3">
                 <label class="form-label" asp-for="Name">Название продукта</label>
                 <input type="text" class="form-control" name="Name" asp-for="Name" value="@Model.Name">

@@ -14,15 +14,14 @@ namespace WebApplicationShopOnline.Models
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Недостаточная длина текста")]
         public string Description { get; set; } 
         public decimal Cost { get; set; }
-        public string PathImage { get; set; }
+        public string? PathImage { get; set; }
         public Product()
-        {
-            
-        }
-        public Product(string name, string description, decimal cost, string pathImage):this()
         {
             Id = instanceCounter;
             instanceCounter++;
+        }
+        public Product(string name, string description, decimal cost, string pathImage):this()
+        {
             Name = name;
             Description = description;
             Cost = cost;

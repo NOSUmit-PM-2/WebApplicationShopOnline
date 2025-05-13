@@ -38,7 +38,7 @@ namespace WebApplicationShopOnline.Controllers
             }
             if (ModelState.IsValid)
             {
-                productsRepository.Add(new Product(product.Name, product.Description, product.Cost, product.PathImage));
+                productsRepository.Add(product);
                 return RedirectToAction("Products", "Admin");
             }
             return View(product);

@@ -1,5 +1,6 @@
 ﻿using WebApplicationShopOnline.Models;
 using System.Text.Json;
+using System.Text.Encodings.Web;
 
 namespace WebApplicationShopOnline.Data
 {
@@ -31,6 +32,7 @@ namespace WebApplicationShopOnline.Data
         public void Add(Product product)
         {
             products.Add(product);
+            Save();
         }
         public void Update(Product product)
         {
@@ -44,6 +46,18 @@ namespace WebApplicationShopOnline.Data
             existingProduct.Description = product.Description;
             existingProduct.Cost = product.Cost;
             existingProduct.PathImage = product.PathImage;
+            Save();
+        }
+
+        private void Save()
+        {
+            string updatedJsonString = JsonSerializer.Serialize(products,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true, // человекочитаемый формат
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            });
+            File.WriteAllText("Data/products1.json", updatedJsonString, System.Text.Encoding.UTF8);
         }
 
     }

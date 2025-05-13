@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using WebApplicationShopOnline.Models;
 using System.Text.Json;
+using System.Text.Encodings.Web;
 
 namespace WebApplicationShopOnline.Data
 {
@@ -18,6 +19,7 @@ namespace WebApplicationShopOnline.Data
         public void Add(Product product)
         {
             products.Add(product);
+            Save();
         }
 
         public List<Product> GetAll()
@@ -30,7 +32,7 @@ namespace WebApplicationShopOnline.Data
             return products.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Updata(Product product)
+        public void Updata(ProductEdit product)
         {
             var existingProduct = products.FirstOrDefault(x => x.Id == product.Id);
             if (existingProduct == null)
@@ -41,6 +43,18 @@ namespace WebApplicationShopOnline.Data
             existingProduct.Description = product.Description;
             existingProduct.Cost = product.Cost;
             existingProduct.PathPicture = product.PathPicture;
+            Save();
+        }
+
+        void Save()
+        {
+            string updatedJsonString = JsonSerializer.Serialize(products,
+            new JsonSerializerOptions
+            {
+                WriteIndented = true, // человекочитаемый формат
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            });
+            File.WriteAllText("Data/products.json", updatedJsonString, System.Text.Encoding.UTF8);
         }
     }
 }

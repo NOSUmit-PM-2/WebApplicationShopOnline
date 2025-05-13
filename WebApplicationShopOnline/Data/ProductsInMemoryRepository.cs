@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Data
@@ -28,7 +30,7 @@ namespace WebApplicationShopOnline.Data
             products.Add(product);
         }
 
-        public void Updata(Product product)
+        public void Updata(ProductEdit product)
         {
             var existingProduct = products.FirstOrDefault(x => x.Id == product.Id);
             if (existingProduct == null)
@@ -40,5 +42,8 @@ namespace WebApplicationShopOnline.Data
             existingProduct.Cost = product.Cost;
             existingProduct.PathPicture = product.PathPicture;
         }
+
+        
+
     }
 }

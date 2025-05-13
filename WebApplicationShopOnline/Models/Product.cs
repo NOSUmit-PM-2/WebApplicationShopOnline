@@ -17,13 +17,12 @@ namespace WebApplicationShopOnline.Models
 
         public Product()
         {
-           
+            Id = instanceCounter;
+            instanceCounter++;
         }
 
         public Product(string name, string description, decimal cost, string pathPicture):this()
         {
-            Id = instanceCounter;
-            instanceCounter++;
             Name = name;
             Description = description;
             Cost = cost;

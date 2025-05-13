@@ -28,8 +28,34 @@ namespace WebApplicationShopOnline.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-            productsRepository.Add(product);
-            return RedirectToAction("Products", "Admin");
+            if (product.Name.Length < 3)
+            {
+                ModelState.AddModelError("Name", "Слишком короткое имя");
+            }
+
+            if (ModelState.IsValid)
+            {
+                productsRepository.Add(product);
+                return RedirectToAction("Products", "Admin");
+            }
+            else
+            {
+                return View(product);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult EditProduct(int id)
+        {
+            var product = productsRepository.TryGetById(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult EditProduct(ProductEdit product)
+        {
+            productsRepository.Updata(product);
+            return RedirectToAction("Index", "Product", product.Id);
         }
 
     }

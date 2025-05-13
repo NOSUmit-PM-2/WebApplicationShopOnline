@@ -26,5 +26,21 @@ namespace WebApplicationShopOnline.Data
         {
             return products.FirstOrDefault(x => x.Id == id);
         }
+
+        public void Updata(ProductEdit product)
+        {
+            var existingProduct = products.FirstOrDefault
+                                    (x => x.Id == product.Id);
+            if (existingProduct == null)
+            {
+                return;
+            }
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+            existingProduct.Cost = product.Cost;
+            existingProduct.PathImage = product.PathImage;
+        }
+
+
     }
 }

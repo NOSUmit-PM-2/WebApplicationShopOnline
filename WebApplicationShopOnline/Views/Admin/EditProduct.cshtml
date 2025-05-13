@@ -5,26 +5,27 @@
         @await Html.PartialAsync("SideMenu")
     </div>
     <div class="col-9">
-        <h2>Добавить продукт</h2>
-        <form method="post">
-            <div asp-validation-summary="All"></div>
+        <h2>Редактировать продукт</h2>
+        <form asp-controller="Admin" asp-action="EditProduct">
+            <div class="mb-3">
+                <label class="form-label">Id</label>
+                <input type="text" class="form-control" name="Id" value="@Model.Id">
+            </div>
             <div class="mb-3">
                 <label class="form-label">Название продукта</label>
-                <input type="text" class="form-control" name="Name" asp-for="Name">
-                <span class="text-danger" asp-validation-for="Name"></span>
+                <input type="text" class="form-control" name="Name" value="@Model.Name">
             </div>
             <div class="mb-3">
                 <label class="form-label">Описание продукта</label>
-                <input type="text" class="form-control" name="Description" asp-for="Description">
-                <span class="text-danger" asp-validation-for="Description"></span>
+                <input type="text" class="form-control" name="Description" value="@Model.Description">
             </div>
             <div class="mb-3">
                 <label class="form-label">Цена</label>
-                <input type="number" class="form-control" name="Cost">
+                <input type="number" class="form-control" name="Cost" value="@Model.Cost">
             </div>
             <div class="mb-3">
                 <label class="form-label">Url картинка</label>
-                <input type="text" class="form-control" name="PathImage">
+                <input type="text" class="form-control" name="PathImage" value="@Model.PathImage">
             </div>
             <button type="submit" class="btn btn-primary">Добавить</button>
         </form>

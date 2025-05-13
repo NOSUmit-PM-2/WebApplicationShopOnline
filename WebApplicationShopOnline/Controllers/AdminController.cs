@@ -39,8 +39,7 @@ namespace WebApplicationShopOnline.Controllers
 
             if (ModelState.IsValid)
             {
-                var temp = product;
-                productsRepository.Add(temp);
+                productsRepository.Add(product);
                 return RedirectToAction("Products", "Admin");
             }
             else 

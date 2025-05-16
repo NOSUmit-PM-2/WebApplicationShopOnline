@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exam.cs" />
+    <Compile Include="FormAddSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddSubject.Designer.cs">
+      <DependentUpon>FormAddSubject.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddSubject.resx">
+      <DependentUpon>FormAddSubject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSession.resx">
       <DependentUpon>FormSession.cs</DependentUpon>
     </EmbeddedResource>

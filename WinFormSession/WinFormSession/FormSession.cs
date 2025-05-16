@@ -28,21 +28,17 @@ namespace WinFormSession
 
         private void buttonAddSubject_Click(object sender, EventArgs e)
         {
-            exams.Add(new Exam("Алгебра"));
+            FormAddSubject formAddSubject = new FormAddSubject();
+            formAddSubject.ShowDialog();
+            exams.Add(new Exam(formAddSubject.Subject));
             ShowListExams();    
         }
 
         private void buttonSetDate_Click(object sender, EventArgs e)
         {
             int currentIndex = listBoxExams.SelectedIndex;
-            if (exams[currentIndex].SetDate("30.06.25"))
-            {
-                ShowListExams();
-            }
-            else
-            {
-                MessageBox.Show("Неверная дата");
-            }
+            exams[currentIndex].Date = "33.06.25";
+            ShowListExams();
         }
     }
 }

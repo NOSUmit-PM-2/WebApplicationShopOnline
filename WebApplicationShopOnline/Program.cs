@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using OnlineShop.DB;
 using WebApplicationShopOnline.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //builder.Services.AddSingleton<ProductsRepository>();
 //builder.Services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>();
-builder.Services.AddSingleton<IProductsRepository, ProductsInJSONRepository>();
+//builder.Services.AddSingleton<IProductsRepository, ProductsInJSONRepository>();
+string connection = builder.Configuration.GetConnectionString("DBonlineShop");
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+builder.Services.AddTransient<IProductDBsRepository, ProductsDBRepository>();
+
 builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
 
 

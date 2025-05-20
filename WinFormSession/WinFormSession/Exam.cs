@@ -37,8 +37,7 @@ namespace WinFormSession
         {
             this.subject = subject;
         }
-
- 
+         
         public override string ToString()
         {
             return this.subject + " " + this.date;

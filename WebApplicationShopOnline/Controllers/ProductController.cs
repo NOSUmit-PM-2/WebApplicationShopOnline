@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.DB;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 
@@ -6,25 +7,25 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        readonly IProductsRepository productsRepository;
+        readonly IProductDBsRepository productsRepository;
 
-        public ProductController(IProductsRepository productsRepository)
+        public ProductController(IProductDBsRepository productsRepository)
         {
             this.productsRepository = productsRepository;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(Guid id)
         {
-            Product prod = productsRepository.TryGetById(id);
+            ProductDB prod = productsRepository.TryGetById(id);
             //ViewBag.Product = prod;
             return View(prod);
         }
 
 
-        public IActionResult Catalog(int id)
+        public IActionResult Catalog()
         {
-            List<Product> products = productsRepository.GetAll();
-            return View(products);
+            List<ProductDB> products = productsRepository.GetAll();
+            return View();
         }
 
     }

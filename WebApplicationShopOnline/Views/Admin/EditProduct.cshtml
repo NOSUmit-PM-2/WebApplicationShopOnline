@@ -1,0 +1,32 @@
+﻿@model Product
+<div class="row">
+    <div class="col">
+        @await Html.PartialAsync("SideMenu")
+    </div>
+    <div class="col-9">
+        <h2>Редатировать продукт</h2>
+        <form asp-action="EditProduct" asp-controller="admin">
+            <div class="mb-3">
+                <label class="form-label">Id продукта</label>
+                <input type="text" class="form-control" name="Id" value="@Model.Id">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Название продукта</label>
+                <input type="text" class="form-control" name="Name" value="@Model.Name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Описание продукта</label>
+                <input type="text" class="form-control" name="Description" value="@Model.Description">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Цена</label>
+                <input type="number" class="form-control" name="Cost" value="@Model.Cost">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">URL картинки</label>
+                <input type="text" class="form-control" name="PathPicture" value="@Model.PathPicture">
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+    </div>
+</div>

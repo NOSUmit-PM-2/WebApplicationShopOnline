@@ -6,7 +6,7 @@ namespace WebApplicationShopOnline.Models
     {
         static int instanceCounter = 0;
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Не указано название продукта")]
         public string Name { get; set; }
@@ -14,25 +14,5 @@ namespace WebApplicationShopOnline.Models
         public string Description { get; set; }
         public decimal Cost { get; set; }
         public string PathPicture { get; set; }
-
-        public Product()
-        {
-            Id = instanceCounter;
-            Name = name;
-            Description = description;
-            Cost = cost;
-            instanceCounter++;
-            PathImage = pathImage;
-        }
-
-        public Product(string name, string description, decimal cost, string pathPicture):this()
-        {
-            Name = name;
-            Description = description;
-            Cost = cost;
-            PathPicture = pathPicture;
-        }
-
-
     }
 }

@@ -20,7 +20,7 @@ namespace WebApplicationShopOnline.Controllers
 
         public IActionResult Index(Guid id)
         {
-            ProductDB prod = productsRepository.TryGetById(id);
+            Product prod = Mapping.ToProduct(productsRepository.TryGetById(id));
             return View(prod);
         }
 

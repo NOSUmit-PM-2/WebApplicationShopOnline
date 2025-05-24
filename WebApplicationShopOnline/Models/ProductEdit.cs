@@ -4,7 +4,7 @@ namespace WebApplicationShopOnline.Models
 {
     public class ProductEdit
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Не указано название продукта")]
         public string Name { get; set; }

@@ -27,7 +27,7 @@ namespace WebApplicationShopOnline.Data
             return products;
         }
 
-        public Product TryGetById(int id)
+        public Product TryGetById(Guid id)
         {
             return products.FirstOrDefault(x => x.Id == id);
         }

@@ -18,7 +18,11 @@ namespace WebApplicationShopOnline.Models
         public Product()
         {
             Id = instanceCounter;
+            Name = name;
+            Description = description;
+            Cost = cost;
             instanceCounter++;
+            PathImage = pathImage;
         }
 
         public Product(string name, string description, decimal cost, string pathPicture):this()
@@ -28,5 +32,7 @@ namespace WebApplicationShopOnline.Models
             Cost = cost;
             PathPicture = pathPicture;
         }
+
+
     }
 }

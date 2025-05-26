@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using OnlineShop.DB.Models;
 
 namespace OnlineShop.DB
 {
-    public class DatabaseContext:DbContext
+    public class DatabaseContext:IdentityDbContext<User>
     {
         public DbSet<ProductDB> ProductDBs { get; set; }
 

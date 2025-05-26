@@ -20,6 +20,14 @@ builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
 var app = builder.Build();
 
 
+// Вызов инициализации
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    IdentityInitializer.Initialize(userManager, roleManager);
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

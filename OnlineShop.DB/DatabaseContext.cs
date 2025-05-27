@@ -5,7 +5,7 @@ namespace OnlineShop.DB
 {
     public class DatabaseContext:DbContext
     {
-        public DbSet<ProductDB> products { get; set; }
+        public DbSet<ProductDB> ProductDBs { get; set; }
 
         public DatabaseContext(DbContextOptions options):base(options)
         {

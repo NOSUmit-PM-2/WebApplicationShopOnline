@@ -22,12 +22,12 @@ namespace WebApplicationShopOnline.Data
             products.Add(product);
         }
 
-        public Product TryGetById(int id)
+        public Product TryGetById(Guid id)
         {
             return products.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Updata(ProductEdit product)
+        public void Updata(Product product)
         {
             var existingProduct = products.FirstOrDefault
                                     (x => x.Id == product.Id);

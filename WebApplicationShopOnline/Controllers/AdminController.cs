@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.DB;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 
@@ -6,9 +7,9 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class AdminController : Controller
     {
-        readonly IProductsRepository productsRepository;
+        readonly IProductDBsRepository productsRepository;
 
-        public AdminController(IProductsRepository productsRepository)
+        public AdminController(IProductDBsRepository productsRepository)
         {
             this.productsRepository = productsRepository;
         }
@@ -16,7 +17,7 @@ namespace WebApplicationShopOnline.Controllers
         [HttpGet]
         public IActionResult Products(int id)
         {
-            return View(productsRepository.GetAll());
+            return View(Mapping.ToProductList(productsRepository.GetAll()));
         }
 
         [HttpGet]
@@ -35,7 +36,7 @@ namespace WebApplicationShopOnline.Controllers
 
             if (ModelState.IsValid)
             {
-                productsRepository.Add(product);
+                productsRepository.Add(Mapping.ToProductDB(product));
                 return RedirectToAction("Products", "Admin");
             }
             else
@@ -45,16 +46,16 @@ namespace WebApplicationShopOnline.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditProduct(int id)
+        public IActionResult EditProduct(Guid id)
         {
-            var product = productsRepository.TryGetById(id);
-            return View(product);
+            ProductDB product = productsRepository.TryGetById(id);
+            return View(Mapping.ToProduct(product));
         }
 
         [HttpPost]
-        public IActionResult EditProduct(ProductEdit product)
+        public IActionResult EditProduct(Product product)
         {
-            productsRepository.Updata(product);
+            productsRepository.Updata(Mapping.ToProductDB(product));
             return RedirectToAction("Index", "Product", product.Id);
         }
 

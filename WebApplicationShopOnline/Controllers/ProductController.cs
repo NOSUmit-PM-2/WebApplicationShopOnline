@@ -18,14 +18,14 @@ namespace WebApplicationShopOnline.Controllers
         {
             ProductDB prod = productsRepository.TryGetById(id);
             //ViewBag.Product = prod;
-            return View(prod);
+            return View(Mapping.ToProduct(prod));
         }
 
 
         public IActionResult Catalog()
         {
             List<ProductDB> products = productsRepository.GetAll();
-            return View();
+            return View(Mapping.ToProductList(products));
         }
 
     }

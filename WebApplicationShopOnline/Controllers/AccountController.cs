@@ -27,7 +27,7 @@ namespace WebApplicationShopOnline.Controllers
                 var result = _signInManager.PasswordSignInAsync(user, login.Password, login.RememberMe, false).Result;
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Catalog", "Product");
                 }
             }
             return View(login);
@@ -39,6 +39,11 @@ namespace WebApplicationShopOnline.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            _signInManager.SignOutAsync().Wait();   
+            return RedirectToAction("Catalog", "Product");
+        }
 
     }
 }

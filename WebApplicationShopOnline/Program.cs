@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 string connection = builder.Configuration.GetConnectionString("DBonlineShop");
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
 
 builder.Services.AddTransient<IProductDBsRepository, ProductsDBRepository>();
@@ -20,7 +21,7 @@ builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
 var app = builder.Build();
 
 
-// Вызов инициализации
+// Вызов инициализации БД 
 using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();

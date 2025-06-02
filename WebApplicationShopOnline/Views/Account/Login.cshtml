@@ -2,7 +2,7 @@
 
 <div class="text-left">
     <h1 class="display-4">Вход в систему</h1>
-    <form>
+    <form asp-action="Login" asp-controller="Account">
         <div class="form-group">
             <label asp-for="UserName">Имя пользователя</label>
             <input asp-for="UserName" class="form-control" placeholder="Enter email">

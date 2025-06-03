@@ -17,7 +17,7 @@ namespace WebApplicationShopOnline.Models
 
         public Product() 
         {
-            Id = Guid.NewGuid();
+            
         }
 
         public Product(string name, string description, decimal cost, string pathImage):this()

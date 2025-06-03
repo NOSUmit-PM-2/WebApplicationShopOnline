@@ -56,7 +56,7 @@ namespace WebApplicationShopOnline.Controllers
         public IActionResult EditProduct(Product product)
         {
             productsRepository.Updata(Mapping.ToProductDB(product));
-            return RedirectToAction("Index", "Product", product.Id);
+            return RedirectToAction("Index", "Product", new { id = product.Id });
         }
 
     }

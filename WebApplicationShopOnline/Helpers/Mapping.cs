@@ -11,7 +11,8 @@ namespace WebApplicationShopOnline.Models
                 Name = product.Name,
                 Description = product.Description,
                 Cost = product.Cost,
-                PathImage = product.PathImage
+                PathImage = product.PathImage,
+                Id = product.Id
             };
         }
 
@@ -22,7 +23,8 @@ namespace WebApplicationShopOnline.Models
                 Name = product.Name,
                 Description = product.Description,
                 Cost = product.Cost,
-                PathImage = product.PathImage
+                PathImage = product.PathImage,
+                Id = product.Id
             };
         }
 

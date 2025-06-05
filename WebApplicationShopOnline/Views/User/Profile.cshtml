@@ -1,0 +1,27 @@
+﻿@model WebApplicationShopOnline.Models.User
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Профиль пользователя</title>
+</head>
+<body>
+    <h1>Данные пользователя</h1>
+    <dl>
+        <dt>ID:</dt>
+        <dd>@Model.IdUser</dd>
+
+        <dt>Имя:</dt>
+        <dd>@Model.Name</dd>
+
+        <dt>Логин:</dt>
+        <dd>@Model.Login</dd>
+
+        <dt>Телефон:</dt>
+        <dd>@Model.Telephone</dd>
+
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+    </dl>
+</body>
+</html>

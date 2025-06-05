@@ -11,13 +11,12 @@ builder.Services.AddControllersWithViews();
 //builder.Services.AddSingleton<ProductsRepository>();
 //builder.Services.AddSingleton<IProductsRepository, ProductsInJSONRepository>();
 //builder.Services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>();
-builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
+//builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
 string connection = builder.Configuration.GetConnectionString("DBonlineShop");
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 builder.Services.AddIdentity<UserDB, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
 builder.Services.AddTransient<IProductDBsRepository, ProductsDBRepository>();
-
-
+builder.Services.AddTransient<ICartsDbReposiroty, CartsDbReposiroty>();
 
 
 var app = builder.Build();
@@ -40,8 +39,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-
 
 app.MapControllerRoute(
     name: "default",

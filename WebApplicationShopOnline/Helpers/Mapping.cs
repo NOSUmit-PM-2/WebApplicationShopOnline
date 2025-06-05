@@ -1,4 +1,5 @@
 ﻿using OnlineShop.DB;
+using OnlineShop.DB.Models;
 
 namespace WebApplicationShopOnline.Models
 {
@@ -44,5 +45,41 @@ namespace WebApplicationShopOnline.Models
             return productDBs;
         }
 
+
+        public static Cart ToCart(CartDb cart)
+        {
+            return new Cart
+            {
+                UserId = cart.UserId,
+                CartItems = cart.CartItems,
+                Id = cart.Id
+            };
+        }
+
+        public static CartDb ToCartDB(Cart cart)
+        {
+            return new CartDb
+            {
+                UserId = cart.UserId,
+                CartItems = cart.CartItems,
+                Id = cart.Id
+            };
+        }
+
+        public static List<Cart> ToCartList(List<CartDb> cartDbs)
+        {
+            List<Cart> carts = new List<Cart>();
+            foreach (var cart in cartDbs)
+                carts.Add(ToProduct(cart));
+            return products;
+        }
+
+        public static List<ProductDB> ToProductDBList(List<Product> products)
+        {
+            List<ProductDB> productDBs = new List<ProductDB>();
+            foreach (var product in products)
+                productDBs.Add(ToProductDB(product));
+            return productDBs;
+        }
     }
 }

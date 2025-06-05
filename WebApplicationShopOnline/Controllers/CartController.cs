@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.DB;
+using OnlineShop.DB.Models;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 
@@ -6,10 +8,10 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class CartController : Controller
     {
-        readonly IProductsRepository productsRepository;
-        readonly ICartRepository cartsRepository;
+        readonly IProductDBsRepository productsRepository;
+        readonly ICartsDbReposiroty cartsRepository;
 
-        public CartController(IProductsRepository productsRepository, ICartRepository cartsRepository)
+        public CartController(IProductDBsRepository productsRepository, ICartsDbReposiroty cartsRepository)
         {
             this.productsRepository = productsRepository;
             this.cartsRepository = cartsRepository;
@@ -17,12 +19,12 @@ namespace WebApplicationShopOnline.Controllers
 
         public IActionResult Index(int id)
         {
-            Cart cart = cartsRepository.TryGetByUserId(1);
+            CartDb cart = cartsRepository.TryGetByUserId(1);
             return View(cart);
         }
         public IActionResult Add(Guid id)
         {
-            Product product = productsRepository.TryGetById(id);
+            ProductDB product = productsRepository.TryGetById(id);
             cartsRepository.Add(product, 1);
             return RedirectToAction("Index");
         }

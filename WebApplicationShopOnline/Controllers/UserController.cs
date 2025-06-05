@@ -1,33 +1,45 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationShopOnline.Models;
+using WebApplicationShopOnline.Models.Repositories;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        [HttpGet]
-        public IActionResult UserDetails([FromQuery] int idUser, 
-                                      [FromQuery] string name,
-                                      [FromQuery] string login,
-                                      [FromQuery] string telephone,
-                                      [FromQuery] string email)
-        {
-            var user = new User
-            {
-                IdUser = idUser,
-                Name = name,
-                Login = login,
-                Telephone = telephone,
-                Email = email
-            };
+        private readonly IUserRepository _userRepository;
 
-            return View(user);
+        public UserController()
+        {
+            _userRepository = new UserRepository();
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string searchName)
         {
-            return View();
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                var user = _userRepository.GetUserByName(searchName);
+                if (user != null)
+                {
+                    return View("Index", new List<User> { user });
+                }
+                ViewBag.Message = "Пользователь не найден";
+                return View("Index", new List<User>());
+            }
+
+            var users = _userRepository.GetAllUsers();
+            return View(users);
+        }
+
+        [HttpGet]
+        public IActionResult UserDetails(int id)
+        {
+            var user = _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
     }
 } 

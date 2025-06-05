@@ -20,14 +20,6 @@ builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
 
 var app = builder.Build();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=User}/{action=Profile}/{id?}");
-});
-
-
 // Вызов инициализации БД 
 using (var scope = app.Services.CreateScope())
 {

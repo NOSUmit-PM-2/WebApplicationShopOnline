@@ -5,20 +5,34 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Profile()
-        {
-            // Получаем query-параметры из URL
-            var user = new User
-            {
-                IdUser = int.TryParse(Request.Query["idUser"], out var id) ? id : 0,
-                Name = Request.Query["name"],
-                Login = Request.Query["login"],
-                Password = Request.Query["password"],
-                Telephone = Request.Query["telephone"],
-                Email = Request.Query["email"]
-            };
+        private readonly UserRepository _userRepository = new();
 
-            return View("Profile", user);
+        // Список пользователей
+        public IActionResult Index(string searchName)
+        {
+            List<User> users = new();
+
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                users = _userRepository.SearchUserByName(searchName);
+            }
+            else
+            {
+                users = _userRepository.GetAllUsers();
+            }
+
+            ViewBag.SearchName = searchName;
+            return View(users);
+        }
+
+        // Детали пользователя
+        public IActionResult Details(int id)
+        {
+            var user = _userRepository.GetUserById(id);
+            if (user == null)
+                return NotFound("Пользователь не найден");
+
+            return View(user);
         }
     }
 }

@@ -1,0 +1,52 @@
+﻿@model List<WebApplicationShopOnline.Models.User>
+
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<h2>Список пользователей</h2>
+
+<!-- Поиск по имени -->
+<form method="get">
+    <input type="text" name="searchName" value="@ViewBag.SearchName" placeholder="Введите имя..." />
+    <button type="submit">Поиск</button>
+</form>
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>Такой пользователь не найден.</p>
+}
+else
+{
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Логин</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr onclick="location.href='@Url.Action("Details", "User", new { id = user.IdUser })'" style="cursor:pointer;">
+                    <td>@user.IdUser</td>
+                    <td>@user.Name</td>
+                    <td>@user.Login</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<br />
+
+<!-- Меню Администратор -->
+<div>
+    <h3>МЕНЮ АДМИНИСТРАТОР</h3>
+    <ul>
+        <li><a asp-controller="User" asp-action="Index">Пользователи</a></li>
+    </ul>
+</div>

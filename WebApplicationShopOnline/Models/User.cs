@@ -10,6 +10,11 @@ namespace WebApplicationShopOnline.Models
         public string Password { get; set; }
         public Guid ID { get; }
 
+        public User()
+        {
+            ID = Guid.NewGuid();
+        }
+
         public User(string name, int age, string email, string password) 
         { 
             Name = name;

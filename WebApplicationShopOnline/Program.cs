@@ -16,6 +16,14 @@ string connection = builder.Configuration.GetConnectionString("DBonlineShop");
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 builder.Services.AddIdentity<UserDB, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
 builder.Services.AddTransient<IProductDBsRepository, ProductsDBRepository>();
+//builder.Services.AddSingleton<IUsersJSRepository, UsersJSRepository>();
+
+/*builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+}); */
 
 var app = builder.Build();
 
@@ -37,6 +45,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+//app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

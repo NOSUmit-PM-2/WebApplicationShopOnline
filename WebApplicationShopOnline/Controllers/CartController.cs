@@ -1,46 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using System.Diagnostics;
-using System.Xml.Linq;
-using WebApplicationShopOnline.Data;
-using WebApplicationShopOnline.Models;
+using System.Threading.Tasks;
+using WebApplicationShopOnline.Models.Repositories;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class CartController : Controller
     {
-        readonly IProductsRepository productsRepository;
-        readonly ICartRepository cartsRepository;
+        private readonly ICartRepository _cartRepository;
 
-        public CartController(IProductsRepository prodRepo, ICartRepository cartsRepository)
+        public CartController(ICartRepository cartRepository)
         {
-            this.productsRepository = prodRepo;
-            this.cartsRepository = cartsRepository;
+            _cartRepository = cartRepository;
         }
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index()
         {
-            Cart cart = cartsRepository.TryGetByUserId(1);
+            // Временно используем userId = 1, в реальном приложении нужно брать из системы аутентификации
+            var cart = await _cartRepository.GetCartAsync(1);
             return View(cart);
         }
 
-        public IActionResult Add(Guid id)
+        [HttpPost]
+        public async Task<IActionResult> UpdateQuantity(int cartItemId, int quantity)
         {
-            Product product = productsRepository.TryGetById(id);
-            cartsRepository.Add(product, 1);
-            return RedirectToAction("Index");
+            if (quantity > 0)
+            {
+                await _cartRepository.UpdateCartItemQuantityAsync(cartItemId, quantity);
+            }
+            else
+            {
+                await _cartRepository.RemoveCartItemAsync(cartItemId);
+            }
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult IncreaseCountProduct(Guid productId)
+        [HttpPost]
+        public async Task<IActionResult> RemoveItem(int cartItemId)
         {
-            cartsRepository.IncreaseCountProduct(productId, 1);
-            return RedirectToAction("Index");
+            await _cartRepository.RemoveCartItemAsync(cartItemId);
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult DecreaseCountProduct(Guid productId)
+        [HttpPost]
+        public async Task<IActionResult> AddToCart(int productId, string productName, decimal price, int quantity = 1)
         {
-            cartsRepository.DecreaseCountProduct(productId, 1);
-            return RedirectToAction("Index");
+            // Временно используем userId = 1
+            await _cartRepository.AddItemToCartAsync(1, productId, productName, price, quantity);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

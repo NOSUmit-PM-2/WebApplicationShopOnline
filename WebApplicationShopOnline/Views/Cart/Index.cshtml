@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineShop.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Корзина";
+}
+
+<h1>Содержимое корзины</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Название товара</th>
+            <th>Количество</th>
+            <th>Цена за единицу</th>
+            <th>Общая цена</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>
+                    <form method="post" action="/Cart/Update">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <input type="number" name="quantity" value="@item.Quantity" min="1" />
+                        <button type="submit">Обновить</button>
+                    </form>
+                </td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@((item.Price * item.Quantity).ToString("C"))</td>
+                <td>
+                    <a href="/Cart/Delete/@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Models;
 using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
+        private readonly UserRepository _userRepository;
+
+        public UserController(UserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
         // Действие для отображения данных пользователя
         public IActionResult Details()
         {
@@ -27,6 +34,24 @@ namespace WebApplicationShopOnline.Controllers
             };
 
             return View(user);
+        }
+        public IActionResult Json_test(string searchName)
+        {
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                var user = _userRepository.FindUserByName(searchName);
+                if (user != null)
+                {
+                    return Json(user); // Возвращаем найденного пользователя в формате JSON
+                }
+                else
+                {
+                    return Json(new { message = "Такой пользователь не найден" });
+                }
+            }
+
+            // Возвращаем всех пользователей в формате JSON
+            return Json(_userRepository.GetAllUsers());
         }
 
         public IActionResult Index()

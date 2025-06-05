@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 string connection = builder.Configuration.GetConnectionString("DBonlineShop");
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
+//builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
 
 builder.Services.AddTransient<IProductDBsRepository, ProductsDBRepository>();
 
@@ -22,12 +22,12 @@ var app = builder.Build();
 
 
 // Вызов инициализации БД 
-using (var scope = app.Services.CreateScope())
-{
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    IdentityInitializer.Initialize(userManager, roleManager);
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+//    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+//    IdentityInitializer.Initialize(userManager, roleManager);
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -1,0 +1,37 @@
+﻿@model List<UserView>
+
+
+<div class="row">
+	<div class="col-9">
+		<table class="table">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Имя</th>
+					<th scope="col">Логин</th>
+					<th scope="col">Телефон</th>
+					<th scope="col">Email</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (int i = 0; i < Model.Count; i++)
+				{
+					<tr>
+						<th scope="row">@i</th>
+						<td>@Model[i].Name</td>
+						<td>@Model[i].Login</td>
+						<td>@Model[i].Phone</td>
+						<td>@Model[i].Email</td>
+						<td><a asp-area="" asp-controller="User" asp-action="index" asp-route-idUser="@Model[i].IdUser">Подробнее</a></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+		<form method="post">
+			<input type="text" name="searchName" class="form-control w-50" placeholder="Поиск..." required />
+			<button type="submit" class="btn btn-success" asp-area="" asp-controller="User" asp-action="Search">Поиск</button>
+		</form>
+	</div>
+</div>

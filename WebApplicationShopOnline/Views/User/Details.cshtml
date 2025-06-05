@@ -1,0 +1,17 @@
+﻿@model WebApplicationShopOnline.Models.User
+
+@{
+    ViewData["Title"] = "Детали пользователя";
+}
+
+<h2>Детали пользователя</h2>
+
+<ul>
+    <li><strong>ID:</strong> @Model.IdUser</li>
+    <li><strong>Имя:</strong> @Model.Name</li>
+    <li><strong>Логин:</strong> @Model.Login</li>
+    <li><strong>Телефон:</strong> @Model.Telephone</li>
+    <li><strong>Email:</strong> @Model.Email</li>
+</ul>
+
+<a asp-action="Index">Назад к списку</a>

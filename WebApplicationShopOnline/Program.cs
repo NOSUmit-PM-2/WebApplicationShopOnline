@@ -20,7 +20,6 @@ builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
 
 var app = builder.Build();
 
-
 // Вызов инициализации БД 
 using (var scope = app.Services.CreateScope())
 {

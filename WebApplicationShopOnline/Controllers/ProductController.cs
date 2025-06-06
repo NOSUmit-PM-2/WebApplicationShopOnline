@@ -1,35 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using OnlineShop.DB;
-using System.Diagnostics;
-using System.Xml.Linq;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationShopOnline.Data;
-using WebApplicationShopOnline.Helpers;
 using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class ProductController : Controller
     {
-        readonly IProductDBsRepository productsRepository;
+        private readonly ProductRepository catalog = new ProductRepository();
 
-        public ProductController(IProductDBsRepository prodRepo)
+        public IActionResult Index(int id)
         {
-            this.productsRepository = prodRepo;
+            Product product = catalog.TryGetById(id);
+            if (product != null) 
+                  return View(product);
+            return null;
         }
 
-        public IActionResult Index(Guid id)
+        public IActionResult Catalog()
         {
-            Product prod = Mapping.ToProduct(productsRepository.TryGetById(id));
-            return View(prod);
+            var products = catalog.GetProducts();
+            return View(products);
         }
 
-
-        public IActionResult Catalog() 
-        {
-            List<ProductDB>products = productsRepository.GetAll();
-            //return View("CatalogSimple", products);
-            return View(Mapping.ToProductsList(products));
-        }
+        
     }
 }

@@ -1,27 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
-    public class HomeController : Controller
+    public class StartController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
         }
-        
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+
+        public string Hello()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var currentTime = DateTime.Now.TimeOfDay;
+
+            if (currentTime >= new TimeSpan(0, 0, 0) && currentTime < new TimeSpan(6, 0, 0))
+            {
+                return "Доброй ночи";
+            }
+            else if (currentTime >= new TimeSpan(6, 0, 0) && currentTime < new TimeSpan(12, 0, 0))
+            {
+                return "Доброе утро";
+            }
+            else if (currentTime >= new TimeSpan(12, 0, 0) && currentTime < new TimeSpan(18, 0, 0))
+            {
+                return "Добрый день";
+            }
+            else
+            {
+                return "Добрый вечер";
+            }
         }
     }
 }

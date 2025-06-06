@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-left">
     <h1 class="display-4">Проект ShopOnline</h1>
     <ul>
@@ -15,17 +14,25 @@
                     <li><a asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="1">Пирожек печеный</a></li>
                 </ul>
                 <li>Создание представления</li>
+                <li>Испоользование bootstrap</li>
+                <li>Самостоятельная работа: создать MVC для пользователя</li>
+                <li><a asp-controller="User" asp-action="Index">MVC для пользователя</a></li>
+                @* ?name=alan&login=alanvkvadrate&password=ddd&phone=+99285437800&email=alanv@yandex.ru *@
+            </ul>
+        </li>
+        <li>
+            18.03.2025
+            <ul>
+                <li>Создание репозитория для храннеия продуктов</li>
+                <li>Создание контроллера для загрузки списка продуктов</li>
+                <li>Создание представления для отображения списка продуктов</li>
                 <ul>
-                    <li><a href="/product/index?id=0">Чебурек</a></li>
-                    <li><a asp-area=""
-                           asp-controller="Product"
-                           asp-action="Index"
-                           asp-route-id="1">
-                           Пирожок</a>
-                    </li>
-                   
-                 </ul>
-                <li>Создание класса пользователь с полями: имя, логин, пароль, телефон. Создание полного MVC  для отображения информации о пользователе</li>
+                    <li> Простое представление</li>
+                    <li> <a href="/product/catalog">Представление с карточками</a></li>
+                </ul>
+                <li>Добавление кнопки ПОДРОБНЕЕ</li>
+                <li>Добавление меню КАТАЛОГ ПРОДУКТОВ</li>
+                <li>Самостоятельная работа: создать MVC для списка пользователей</li>
             </ul>
         </li>
         <li>

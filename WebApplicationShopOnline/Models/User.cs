@@ -1,29 +1,38 @@
-﻿namespace WebApplicationShopOnline.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApplicationShopOnline.Models
 {
     public class User
     {
         static int instanceCounter = 0;
-        public int IdUser { get; }
+
+        public Guid IdUser { get; set; }
+
+        [Required(ErrorMessage = "Введите имя пользователя")]
         public string Name { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Введите телефон пользователя")]
         public string Telephone { get; set; }
+
+        [Required(ErrorMessage = "Введите адрес электронной почты")]
         public string Email { get; set; }
 
-        public User(string name, string login, string password, string telephone, string email)
+        [Required(ErrorMessage = "Введите логин")]
+        public string Login { get; set; }
+
+        [Required(ErrorMessage = "Введите пароль")]
+        public string Password { get; set; }
+
+
+        public User(string name, string telephone, string email, string login, string password)
         {
-            IdUser = instanceCounter;
+            IdUser = Guid.NewGuid();
             Name = name;
-            Login = login;
-            Password = password;
             Telephone = telephone;
             Email = email;
+            Login = login;
+            Password = password;
             instanceCounter++;
-        }
-
-        public override string ToString()
-        {
-            return String.Join("\n", new String[] { IdUser.ToString(), Name, Login, Password, Telephone, Email });
         }
 
 

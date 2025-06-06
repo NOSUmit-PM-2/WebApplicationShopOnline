@@ -6,20 +6,10 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserRepository userlist = new UserRepository();
-
-        public IActionResult Index(int id)
+        public IActionResult Index(string name, string telephone, string email, string login, string password)
         {
-            User user = userlist.TryGetById(id);
-            if (user != null)
-                return View(user);
-            return null;
-        }
+            return View(new User(name, telephone, email, login, password));
 
-        public IActionResult UsersList()
-        {
-            var users = userlist.GetUsers();
-            return View(users);
         }
 
 

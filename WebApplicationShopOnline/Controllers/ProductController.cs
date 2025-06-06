@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
 

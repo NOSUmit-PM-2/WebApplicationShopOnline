@@ -17,7 +17,39 @@ namespace WebApplicationShopOnline.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult Tasks()
+        {
+            return View();
+        }
+
+        public string Task1()
+        {
+            var Hour = DateTime.Now.Hour;
+
+            if (Hour >= 0 && Hour < 6) return "Ночь";
+            if (Hour >= 6 && Hour < 12) return "Утро";
+            if (Hour >= 12 && Hour < 18) return "День";
+
+            return "Вечер";
+        }
+
+        public string Task2(int a, int b)
+        {
+            return Convert.ToString(a + b);
+        }
+
+
+        public string Task3_4(int a, int b, string sign)
+        {
+            if (sign == "+") return Convert.ToString(a + b);
+            if (sign == "-") return Convert.ToString(a - b);
+            if (sign == "*") return Convert.ToString(a * b);
+            if (sign == "/") return Convert.ToString(a / b);
+            else return "Ошибка.";
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

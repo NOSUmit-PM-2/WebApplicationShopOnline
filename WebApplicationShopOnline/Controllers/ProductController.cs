@@ -18,18 +18,20 @@ namespace WebApplicationShopOnline.Controllers
             this.productsRepository = prodRepo;
         }
 
-        public IActionResult Index(Guid id)
+                public IActionResult Index(int id)
         {
-            Product prod = Mapping.ToProduct(productsRepository.TryGetById(id));
-            return View(prod);
+            Product product = catalog.TryGetById(id);
+            if (product != null) 
+                  return View(product);
+            return null;
         }
 
-
-        public IActionResult Catalog() 
+        public IActionResult Catalog()
         {
-            List<ProductDB>products = productsRepository.GetAll();
-            //return View("CatalogSimple", products);
-            return View(Mapping.ToProductsList(products));
+            var products = catalog.GetProducts();
+            return View(products);
         }
+
+        
     }
 }

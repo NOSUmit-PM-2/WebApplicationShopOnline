@@ -9,7 +9,6 @@ using WebApplicationShopOnline.Models;
 
 namespace WebApplicationShopOnline.Controllers
 {
-    //
     public class AdminController : Controller
     {
         readonly IProductDBsRepository productsRepository;

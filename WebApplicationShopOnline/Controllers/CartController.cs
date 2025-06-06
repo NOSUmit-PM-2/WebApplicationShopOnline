@@ -1,46 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using System.Diagnostics;
-using System.Xml.Linq;
-using WebApplicationShopOnline.Data;
-using WebApplicationShopOnline.Models;
 
-namespace WebApplicationShopOnline.Controllers
+namespace YourNamespace.Controllers
 {
-    public class CartController : Controller
+    public class CalculatorController : Controller
     {
-        readonly IProductsRepository productsRepository;
-        readonly ICartRepository cartsRepository;
-
-        public CartController(IProductsRepository prodRepo, ICartRepository cartsRepository)
+        public IActionResult Index(double num1 = 0, double num2 = 0)
         {
-            this.productsRepository = prodRepo;
-            this.cartsRepository = cartsRepository;
-        }
+            double result = num1 + num2;
 
-        public IActionResult Index(int id)
-        {
-            Cart cart = cartsRepository.TryGetByUserId(1);
-            return View(cart);
-        }
+            string response = $"{num1} + {num2} = {result}";
 
-        public IActionResult Add(Guid id)
-        {
-            Product product = productsRepository.TryGetById(id);
-            cartsRepository.Add(product, 1);
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult IncreaseCountProduct(Guid productId)
-        {
-            cartsRepository.IncreaseCountProduct(productId, 1);
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult DecreaseCountProduct(Guid productId)
-        {
-            cartsRepository.DecreaseCountProduct(productId, 1);
-            return RedirectToAction("Index");
+            return Content(response);
         }
     }
 }

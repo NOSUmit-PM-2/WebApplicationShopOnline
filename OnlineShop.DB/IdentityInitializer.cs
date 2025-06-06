@@ -26,12 +26,12 @@ namespace OnlineShop.DB
             }
             if (userManager.FindByNameAsync(adminEmail).Result == null)
             {
-                var admin = new User { Email = adminEmail, UserName = adminEmail };
-                var result = userManager.CreateAsync(admin, adminPassword).Result;
-                if (result.Succeeded)
-                    {
-                        userManager.AddToRoleAsync(admin, Constants.AdminRoleName).Wait();
-                    }
+               //// var admin = new User { Email = adminEmail, UserName = adminEmail };
+               // var result = userManager.CreateAsync(admin, adminPassword).Result;
+               // if (result.Succeeded)
+               //     {
+               //         userManager.AddToRoleAsync(admin, Constants.AdminRoleName).Wait();
+               //     }
             }
         }
     }

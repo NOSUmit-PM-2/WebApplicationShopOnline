@@ -1,0 +1,45 @@
+﻿@model List<WebApplicationStart.Models.User>
+
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<h2>Список пользователей</h2>
+
+<!-- Форма поиска -->
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchName" class="form-control" placeholder="Поиск по имени">
+        <button type="submit" class="btn btn-primary">Найти</button>
+    </div>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">@ViewBag.Message</div>
+}
+
+<!-- Таблица пользователей -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Логин</th>
+            <th>Телефон</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.IdUser</td>
+                <td><a href="@Url.Action("Details", new { id = user.IdUser })">@user.Name</a></td>
+                <td>@user.Email</td>
+                <td>@user.Login</td>
+                <td>@user.Telephone</td>
+            </tr>
+        }
+    </tbody>
+</table>

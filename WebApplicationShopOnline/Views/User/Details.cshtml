@@ -1,0 +1,27 @@
+﻿@model WebApplicationStart.Models.User
+
+@{
+    ViewData["Title"] = "Профиль пользователя";
+}
+
+<h2>Профиль пользователя</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <dl class="row">
+            <dt class="col-sm-3">ID:</dt>
+            <dd class="col-sm-9">@Model.IdUser</dd>
+
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Логин:</dt>
+            <dd class="col-sm-9">@Model.Login</dd>
+
+            <dt class="col-sm-3">Телефон:</dt>
+            <dd class="col-sm-9">@Model.Telephone</dd>
+        </dl>
+        <a href="@Url.Action("Index")" class="btn btn-primary">Вернуться к списку</a>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model List<User>
+
+<form method="post">
+	<input type="text" name="searchName" class="form-control w-50" placeholder="Поиск..." required />
+	<button type="submit" class="btn btn-success" asp-area="" asp-controller="User" asp-action="Search">Поиск</button>
+</form>
+
+<div class="row">
+    @foreach (var user in Model)
+    {
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-title">Name: @user.Name</p>
+                        <p class="card-text">Telephone: @user.Telephone</p>
+                        <p class="card-text">Email: @user.Email</p>
+                        <p class="card-text">Login: @user.Login</p>
+                        <a class="btn btn-primary btn-lg active"
+                           asp-area=""
+                           asp-controller="User"
+                           asp-action="Index" asp-route-id="@user.IdUser">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

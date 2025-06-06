@@ -4,43 +4,45 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using WebApplicationShopOnline.Data;
 using WebApplicationShopOnline.Models;
+using System.Threading.Tasks;
+using WebApplicationShopOnline.Models.Repositories;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class CartController : Controller
     {
-        readonly IProductsRepository productsRepository;
-        readonly ICartRepository cartsRepository;
+        private readonly ICartRepository ccartRepository;
 
-        public CartController(IProductsRepository prodRepo, ICartRepository cartsRepository)
+        public CartController(ICartRepository cartRepository)
         {
-            this.productsRepository = prodRepo;
-            this.cartsRepository = cartsRepository;
+            ccartRepository = cartRepository;
         }
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index()
         {
-            Cart cart = cartsRepository.TryGetByUserId(1);
+            var cart = await ccartRepository.GetCartAsync(1);
             return View(cart);
         }
 
-        public IActionResult Add(Guid id)
+        [HttpPost]
+        public async Task<IActionResult> UpdateQuantity(int cartItemId, int quantity)
         {
-            Product product = productsRepository.TryGetById(id);
-            cartsRepository.Add(product, 1);
-            return RedirectToAction("Index");
+            if (quantity > 0)
+            {
+                await ccartRepository.UpdateCartItemQuantityAsync(cartItemId, quantity);
+            }
+            else
+            {
+                await ccartRepository.RemoveCartItemAsync(cartItemId);
+            }
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult IncreaseCountProduct(Guid productId)
+        [HttpPost]
+        public async Task<IActionResult> RemoveItem(int cartItemId)
         {
-            cartsRepository.IncreaseCountProduct(productId, 1);
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult DecreaseCountProduct(Guid productId)
-        {
-            cartsRepository.DecreaseCountProduct(productId, 1);
-            return RedirectToAction("Index");
-        }
+            await ccartRepository.RemoveCartItemAsync(cartItemId);
+            return RedirectToAction(nameof(Index));
+        }                
     }
 }

@@ -4,7 +4,7 @@ namespace WebApplicationShopOnline.Models
 {
     public class User
     {
-        static int instanceCounter = 0;
+        
 
         public Guid IdUser { get; set; }
 
@@ -32,7 +32,6 @@ namespace WebApplicationShopOnline.Models
             Email = email;
             Login = login;
             Password = password;
-            instanceCounter++;
         }
 
 

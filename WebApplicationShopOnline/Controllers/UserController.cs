@@ -6,10 +6,30 @@ namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index(string name, string telephone, string email, string login, string password)
-        {
-            return View(new User(name, telephone, email, login, password));
+         readonly UserRepository userRepository = new UserRepository();
 
+        public IActionResult Index(Guid id)
+        {
+            User user = userRepository.TryGetById(id);
+            if (user != null)
+                return View(user);
+            return NotFound();
+        }
+
+        public IActionResult UsersList()
+        {
+            var users = userRepository.GetAll();
+            return View(users);
+        }
+
+        public IActionResult Search(string sname)
+        {
+            var user = userRepository.GetAll().FirstOrDefault(user => user.Name == sname);
+            if (user == null)
+            {
+                return NotFound("Может ты обознался");
+            }
+            return RedirectToAction("Index", new { id = user.IdUser });
         }
 
 

@@ -15,7 +15,7 @@ builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Data
 
 builder.Services.AddTransient<IProductDBsRepository, ProductsDBRepository>();
 
-builder.Services.AddSingleton<ICartRepository, CartsInMemoryRepository>();
+builder.Services.AddTransient<ICartDBsRepository, CartDBsRepository>();
 
 
 var app = builder.Build();

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using OnlineShop.DB.Models;
 using System.Diagnostics;
 using WebApplicationShopOnline.Models;
+using OnlineShop.DB;
 
 namespace WebApplicationShopOnline.Controllers
 {
@@ -36,6 +38,28 @@ namespace WebApplicationShopOnline.Controllers
    
         public IActionResult Login()
         {
+            return View();
+        }
+
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Registration(Registration reg)
+        {
+            if (_userManager.FindByNameAsync(reg.UserName).Result == null)
+            {
+                var user = new User { Email = reg.Email, UserName = reg.UserName };
+                var result = _userManager.CreateAsync(user, reg.Password).Result;
+                if (result.Succeeded)
+                {
+                    _userManager.AddToRoleAsync(user, OnlineShop.DB.Constants.UserRoleName).Wait();
+                    _signInManager.SignInAsync(user, false).Wait();
+                    return RedirectToAction("Catalog", "Product");
+                }
+            }
             return View();
         }
 

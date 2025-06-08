@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.DB
 {
-    internal class Constants
+    public class Constants
     {
         public const string AdminRoleName = "Admin";
         public const string UserRoleName = "User";

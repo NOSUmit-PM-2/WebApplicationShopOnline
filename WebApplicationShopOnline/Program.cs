@@ -20,7 +20,6 @@ builder.Services.AddTransient<ICartDBsRepository, CartDBsRepository>();
 
 var app = builder.Build();
 
-
 // Вызов инициализации БД 
 using (var scope = app.Services.CreateScope())
 {

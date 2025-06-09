@@ -21,7 +21,7 @@ builder.Services.AddTransient<ICartDBsRepository, CartDBsRepository>();
 var app = builder.Build();
 
 
-// Вызов инициализации БД 
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 
 using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
@@ -43,6 +43,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Product}/{action=Catalog}/{id?}");
+    pattern: "{controller=Product}/{action=Catalog}/{a?}/{b?}");
 
 app.Run();

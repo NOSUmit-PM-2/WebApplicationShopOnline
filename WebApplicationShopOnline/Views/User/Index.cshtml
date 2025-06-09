@@ -1,0 +1,38 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Информация о пользователе";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Данные пользователя</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID пользователя:</dt>
+                        <dd class="col-sm-9">@Model.Id</dd>
+
+                        <dt class="col-sm-3">Имя:</dt>
+                        <dd class="col-sm-9">@Model.Name</dd>
+
+                        <dt class="col-sm-3">Логин:</dt>
+                        <dd class="col-sm-9">@Model.Login</dd>
+
+                        <dt class="col-sm-3">Пароль:</dt>
+                        <dd class="col-sm-9">@Model.Password</dd>
+
+                        <dt class="col-sm-3">Телефон:</dt>
+                        <dd class="col-sm-9">@Model.Telephone</dd>
+
+                        <dt class="col-sm-3">Email:</dt>
+                        <dd class="col-sm-9">@Model.Email</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

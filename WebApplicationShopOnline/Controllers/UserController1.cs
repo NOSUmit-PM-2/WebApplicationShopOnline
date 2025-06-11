@@ -1,30 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// Controllers/UserController.cs
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationShopOnline.Models;
-
+using WebApplicationShopOnline.Repositories;
 
 namespace WebApplicationShopOnline.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User/Index
-        public IActionResult Index()
+        private readonly IUserRepository _repository;
+
+        public UserController(IUserRepository repository)
         {
-            return View();
+            _repository = repository;
         }
 
-        // GET: User/Details
-        public IActionResult Details(int idUser, string name, string login,
-                                   string password, string telephone, string email)
+        public IActionResult Index(string search)
         {
-            var user = new User1
+            ViewData["CurrentFilter"] = search;
+
+            if (!string.IsNullOrEmpty(search))
             {
-                IdUser = idUser,
-                Name = name,
-                Login = login,
-                Password = password,
-                Telephone = telephone,
-                Email = email
-            };
+                var users = _repository.SearchByName(search);
+                ViewBag.SearchPerformed = true;
+                return View(users);
+            }
+
+            return View(_repository.GetAll());
+        }
+
+        public IActionResult Details(int id)
+        {
+            var user = _repository.GetById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
             return View(user);
         }
     }

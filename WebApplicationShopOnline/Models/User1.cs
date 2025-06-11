@@ -1,6 +1,7 @@
-﻿namespace WebApplicationShopOnline.Models
+﻿
+namespace WebApplicationShopOnline.Models
 {
-    public class User1
+    public class User1  
     {
         public int IdUser { get; set; }
         public string Name { get; set; }

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebApplicationShopOnline.Models.User1>  
+
+@{
+    ViewData["Title"] = "Список пользователей";
+    Layout = "_Layout"; // Указывает на использование шаблона
+}
+
+<!-- Дальше идет HTML-разметка таблицы -->
+<table class="table">
+    @foreach (var user in Model) 
+    {
+        <tr>
+            <td>@user.IdUser</td>
+            <td>@user.Name</td>
+            <!-- Остальные столбцы -->
+        </tr>
+    }
+</table>
